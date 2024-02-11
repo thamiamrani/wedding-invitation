@@ -42,19 +42,6 @@ export default {
         this.$emit('onClose')
       }, 1000)
     },
-    sendBarrage() {
-      this.$nextTick(() => {
-        this.hasEntered = true
-        if (!this.wish) {
-          return
-        }
-        this.isOpening = false
-        this.$refs.wishInput.blur()
-        setTimeout(() => {
-          this.$emit('sendBarrage', this.wish)
-        }, 660)
-      })
-    }
   }
 }
 </script>
@@ -62,10 +49,8 @@ export default {
 <style lang="less">
 .wedding-invitation {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   padding-top: 60px;
   padding-bottom: 400px;
   z-index: 4;
@@ -84,11 +69,11 @@ export default {
   }
 
   .invitation-container {
-    position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 120%;
+    height: 100%;
     transition: transform 2.6s cubic-bezier(0.4, 0, 1, 1);
     -webkit-transition: -webkit-transform 2.6s cubic-bezier(0.4, 0, 1, 1);
 
@@ -98,19 +83,18 @@ export default {
     }
 
     .invitation-cover {
-      width: 40%;
-      height: 100%;
-      background-color: #fffcdf;
-      border-radius: 10px;
+      display: flex;
+      width: 35%;
+      height: 75%;
+      border-radius: 5px;
+      background-color: #fffded;
       perspective: 500px;
       box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15);
 
       .cover-content {
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
-        height: 100%;
+        height: 92%;
+        z-index: 9;
         opacity: 0;
         padding: 10px 20px;
         transition: transform 2.2s cubic-bezier(0.4, 0, 1, 1);
@@ -118,8 +102,8 @@ export default {
 
         &.invitation-up {
           transform: translateY(-190px);
-          -webkit-transform: translateY(-190px) translateZ(1.5);
-          animation: coverhide 1.5s forwards;
+          -webkit-transform: translateY(-190px);
+          animation: coverhide 1.8s forwards;
         }
 
         @keyframes coverhide {
@@ -128,18 +112,17 @@ export default {
           }
 
           99.999% {
-            opacity: 0.5;
+            opacity: 0.99;
           }
 
           100% {
-            transform: scale(1.15);
-            z-index: 9;
+            transform: scale(1.5);
             opacity: 1;
+            margin-top: 50px;
           }
         }
 
         .content-inside {
-          min-width: 300px;
           height: 100%;
           padding: 10px;
           color: #a9895d;
@@ -160,38 +143,6 @@ export default {
           }
 
           .content-inside-bless {
-            input {
-              width: 100%;
-              height: 35px;
-              margin-bottom: 10px;
-              outline: none;
-              border: none;
-              border-bottom: 1px solid #f7debb;
-              color: #a9895d;
-              background: transparent;
-              font-size: 16px;
-
-              &::-webkit-input-placeholder {
-                color: #E8D1B1;
-                font-size: 12px;
-              }
-
-              &::-moz-placeholder {
-                color: #E8D1B1;
-                font-size: 12px;
-              }
-
-              &:-ms-input-placeholder {
-                color: #E8D1B1;
-                font-size: 12px;
-              }
-
-              &:-moz-placeholder {
-                color: #E8D1B1;
-                font-size: 12px;
-              }
-            }
-
             >div {
               display: flex;
 
@@ -199,7 +150,7 @@ export default {
                 width: 100%;
                 height: 35px;
                 color: #a9895d;
-                background: #f7debb;
+                background: #fffded;
                 border: none;
                 outline: none;
 
@@ -214,7 +165,7 @@ export default {
 
                 &:last-child {
                   width: 60px;
-                  border: 1px solid #f7debb;
+                  border: 1px solid #fffded;
                   background: transparent;
                 }
               }
@@ -230,11 +181,11 @@ export default {
         width: 70%;
         height: 100%;
         border-radius: 10px;
-        background-color: #fffcdf;
+        background-color: #fffded;
         box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
         z-index: 6;
-        transition: transform 1.5s;
-        -webkit-transition: -webkit-transform 1.5s;
+        transition: transform 2s;
+        -webkit-transition: -webkit-transform 2s;
         transform-origin: 0 50%;
         -webkit-transform-origin: 0 50%;
 
@@ -252,11 +203,11 @@ export default {
         width: 40%;
         height: 100%;
         border-radius: 10px;
-        background-color: #fffcdf;
+        background-color: #fffded;
         box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
         z-index: 5;
-        transition: transform 1.5s;
-        -webkit-transition: -webkit-transform 1.5s;
+        transition: transform 1.7s;
+        -webkit-transition: -webkit-transform 1.7s;
         transform-origin: 100% 50%;
         -webkit-transform-origin: 100% 50%;
 
@@ -273,11 +224,11 @@ export default {
         max-width: 80px;
         max-height: 80px;
         margin-left: -40px;
-        z-index: 7;
+        z-index: 10;
         transform-origin: 50% 50%;
         -webkit-transform-origin: 50% 50%;
-        transition: all 1.8s cubic-bezier(0.4, 0, 1, 1);
-        -webkit-transition: all 1.8s cubic-bezier(0.4, 0, 1, 1);
+        transition: all 1.4s cubic-bezier(0.4, 0, 1, 1);
+        -webkit-transition: all 1.4s cubic-bezier(0.4, 0, 1, 1);
 
         &.invitation-flight {
           opacity: 0;
@@ -285,4 +236,34 @@ export default {
       }
     }
   }
+
+  @media only screen and (max-width: 600px) {    
+    .invitation-container{
+      display: flex !important;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    .invitation-cover {
+      display: flex !important;
+      width: 65% !important;
+      height: 60% !important;
+    }
+    .cover-content {
+      display: flex;
+      width: 20%;
+      height: 60%;
+    }  
+    
+    &.invitation-up {
+          transform: translateY(-190px);
+          -webkit-transform: translateY(-190px) translateZ(1.5);
+          animation: coverhide 1.8s forwards;
+        }
+    
+    .content-inside {
+      width: 140%;
+      height: 10%;
+    }
+    }
 }</style>
