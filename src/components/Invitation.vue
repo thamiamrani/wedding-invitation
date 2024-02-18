@@ -4,17 +4,12 @@
       <div class="invitation-cover">
         <div class="cover-content" :class="{ 'invitation-up': isOpening }">
           <div class="content-inside">
-            <img class="content-inside-photo" src="../images/invite.jpg">
-            <div class="content-inside-bless">
-              <div>
-                <button @click="closeInvitation">close</button>
-              </div>
-            </div>
+            <img class="content-inside-photo" src="../images/invite1.png">
           </div>
         </div>
         <div class="cover-inside-left" :class="{ 'opening': isOpening }"></div>
         <div class="cover-inside-right" :class="{ 'opening': isOpening }"></div>
-        <img class="cover-inside-seal" src="../images/seal.png" @click="openInvitation"
+        <img class="cover-inside-seal" src="../images/seal1.png" @click="openInvitation"
           :class="{ 'invitation-flight': isOpening }">
       </div>
     </div>
@@ -27,20 +22,11 @@ export default {
   data() {
     return {
       isOpening: false,
-      wish: '',
-      isFocused: false,
-      hasEntered: false
     }
   },
   methods: {
     openInvitation() {
       this.isOpening = true
-    },
-    closeInvitation() {
-      this.isOpening = false
-      setTimeout(() => {
-        this.$emit('onClose')
-      }, 1000)
     },
   }
 }
@@ -54,55 +40,49 @@ export default {
   padding-top: 60px;
   padding-bottom: 400px;
   z-index: 4;
-  transform: scale(0.05);
-  -webkit-transform: scale(0.05);
   opacity: 0;
   transition: transform 2.8s cubic-bezier(.26, 1.84, .39, .61), opacity 0.5s linear;
-  -webkit-transition: -webkit-transform 0.8s cubic-bezier(.26, 1.84, .39, .61), opacity 0.5s linear;
   background-size: 100%;
   overflow: hidden;
 
   &.invitation-bounce {
     opacity: 1;
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1);
   }
 
   .invitation-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 40px;
     transition: transform 2.6s cubic-bezier(0.4, 0, 1, 1);
-    -webkit-transition: -webkit-transform 2.6s cubic-bezier(0.4, 0, 1, 1);
 
     &.invitation-down {
-      transform: translateY(20px);
-      -webkit-transform: translateY(20px);
+      transform: translateY(50px);
     }
 
     .invitation-cover {
-      display: flex;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
       width: 35%;
-      height: 75%;
+      height: 85%;
       border-radius: 5px;
       background-color: #fffded;
       perspective: 500px;
       box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15);
 
       .cover-content {
-        width: 100%;
-        height: 92%;
+        height: 80%;
+        width: 120%;
         z-index: 9;
         opacity: 0;
         padding: 10px 20px;
         transition: transform 2.2s cubic-bezier(0.4, 0, 1, 1);
-        -webkit-transition: -webkit-transform 2.2s cubic-bezier(0.4, 0, 1, 1);
+        overflow: hidden;
 
         &.invitation-up {
-          transform: translateY(-190px);
-          -webkit-transform: translateY(-190px);
+          transform: translateY(-60px);
+          transform: scale(1.48);
           animation: coverhide 1.8s forwards;
         }
 
@@ -116,7 +96,6 @@ export default {
           }
 
           100% {
-            transform: scale(1.5);
             opacity: 1;
             margin-top: 50px;
           }
@@ -128,11 +107,11 @@ export default {
           color: #a9895d;
           background-color: #FFF1DE;
           text-align: center;
-          overflow: auto;
+          overflow: hidden;
+          scrollbar-width: none;
 
           .content-inside-photo {
             width: 100%;
-            margin-bottom: 10px;
             padding: 5px;
             border: 1px solid #f7debb;
           }
@@ -140,36 +119,6 @@ export default {
           p {
             margin-top: 0;
             margin-bottom: 5px;
-          }
-
-          .content-inside-bless {
-            >div {
-              display: flex;
-
-              button {
-                width: 100%;
-                height: 35px;
-                color: #a9895d;
-                background: #fffded;
-                border: none;
-                outline: none;
-
-                &:disabled {
-                  opacity: 0.8;
-                }
-
-                &:first-child {
-                  margin-right: 10px;
-                  flex: 1;
-                }
-
-                &:last-child {
-                  width: 60px;
-                  border: 1px solid #fffded;
-                  background: transparent;
-                }
-              }
-            }
           }
         }
       }
@@ -181,18 +130,14 @@ export default {
         width: 70%;
         height: 100%;
         border-radius: 10px;
-        background-color: #fffded;
+        background-color: #f9f7e7;
         box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
         z-index: 6;
         transition: transform 2s;
-        -webkit-transition: -webkit-transform 2s;
         transform-origin: 0 50%;
-        -webkit-transform-origin: 0 50%;
 
         &.opening {
-          transform: rotate3d(0, 1, 0, -140deg) translate3d(0, 0, -1500px);
-          -webkit-transform: rotate3d(0, 1, 0, -140deg);
-
+          transform: rotate3d(0, 1, 0, -140deg);
         }
       }
 
@@ -203,17 +148,14 @@ export default {
         width: 40%;
         height: 100%;
         border-radius: 10px;
-        background-color: #fffded;
+        background-color: #385447;
         box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
         z-index: 5;
         transition: transform 1.7s;
-        -webkit-transition: -webkit-transform 1.7s;
         transform-origin: 100% 50%;
-        -webkit-transform-origin: 100% 50%;
 
         &.opening {
           transform: rotate3d(0, 1, 0, 140deg);
-          -webkit-transform: rotate3d(0, 1, 0, 140deg);
         }
       }
 
@@ -221,14 +163,12 @@ export default {
         position: absolute;
         left: 70%;
         bottom: 100px;
-        max-width: 80px;
-        max-height: 80px;
+        max-width: 100px;
+        max-height: 100px;
         margin-left: -40px;
         z-index: 10;
         transform-origin: 50% 50%;
-        -webkit-transform-origin: 50% 50%;
         transition: all 1.4s cubic-bezier(0.4, 0, 1, 1);
-        -webkit-transition: all 1.4s cubic-bezier(0.4, 0, 1, 1);
 
         &.invitation-flight {
           opacity: 0;
@@ -237,33 +177,43 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 600px) {    
-    .invitation-container{
+  @media only screen and (max-width: 1050px) {
+
+    .cover-content {
       display: flex !important;
-      align-items: center;
-      width: 100%;
-      height: 100%;
+      align-items: center !important;
+      justify-content: center !important;
+
+      &.invitation-up {
+        height: 105% !important;
+      }
     }
+
+    .invitation-container {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 110%;
+    }
+
     .invitation-cover {
       display: flex !important;
-      width: 65% !important;
-      height: 60% !important;
+      width: 75% !important;
+      height: 83% !important;
     }
-    .cover-content {
-      display: flex;
-      width: 20%;
-      height: 60%;
-    }  
-    
+
     &.invitation-up {
-          transform: translateY(-190px);
-          -webkit-transform: translateY(-190px) translateZ(1.5);
-          animation: coverhide 1.8s forwards;
-        }
-    
+      transform: translateY(-190px);
+      animation: coverhide 1.8s forwards;
+    }
+
     .content-inside {
-      width: 140%;
-      height: 10%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      width: 85%;
+      height: 88% !important;
     }
-    }
-}</style>
+  }
+}
+</style>
