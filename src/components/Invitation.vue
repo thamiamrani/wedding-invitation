@@ -103,17 +103,17 @@ export default {
 
         .content-inside {
           height: 100%;
-          padding: 10px;
+          padding: 6px;
           color: #a9895d;
-          background-color: #FFF1DE;
+          background-color: #3c4d45;
           text-align: center;
           overflow: hidden;
           scrollbar-width: none;
 
           .content-inside-photo {
             width: 100%;
-            padding: 5px;
-            border: 1px solid #f7debb;
+            padding: 6px;
+            border: 0.5px solid #ebf3d0c7;
           }
 
           p {
@@ -128,7 +128,7 @@ export default {
         left: 0;
         top: 0;
         width: 70%;
-        height: 100%;
+        height: 120%;
         border-radius: 10px;
         background-color: #f9f7e7;
         box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
@@ -146,7 +146,7 @@ export default {
         right: 0;
         top: 0;
         width: 40%;
-        height: 100%;
+        height: 120%;
         border-radius: 10px;
         background-color: #385447;
         box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
@@ -161,6 +161,7 @@ export default {
 
       .cover-inside-seal {
         position: absolute;
+        top: 80%;
         left: 70%;
         bottom: 100px;
         max-width: 100px;
@@ -169,9 +170,24 @@ export default {
         z-index: 10;
         transform-origin: 50% 50%;
         transition: all 1.4s cubic-bezier(0.4, 0, 1, 1);
+        animation: pulse 3s linear infinite;
 
         &.invitation-flight {
           opacity: 0;
+        }
+
+        @keyframes pulse {
+          0% {
+            transform: scale(1.05);
+          }
+
+          50% {
+            transform: scale(0.9);
+          }
+
+          100% {
+            transform: scale(1.05);
+          }
         }
       }
     }
