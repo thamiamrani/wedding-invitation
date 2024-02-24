@@ -4,13 +4,17 @@
       <div class="invitation-cover">
         <div class="cover-content" :class="{ 'invitation-up': isOpening }">
           <div class="content-inside">
-            <img class="content-inside-photo" src="../images/invite1.png">
+            <img class="content-inside-photo" src="../images/invite.png">
           </div>
         </div>
         <div class="cover-inside-left" :class="{ 'opening': isOpening }"></div>
         <div class="cover-inside-right" :class="{ 'opening': isOpening }"></div>
         <img class="cover-inside-seal" src="../images/seal1.png" @click="openInvitation"
           :class="{ 'invitation-flight': isOpening }">
+      </div>
+      <div class="rsvp" :class="{ 'opening': isOpening }">
+        <a @click="rsvp">RSVP</a>
+        <p>Date limite: 01-05-2024</p>
       </div>
     </div>
   </div>
@@ -28,6 +32,9 @@ export default {
     openInvitation() {
       this.isOpening = true
     },
+    rsvp() {
+      window.location.href = "https://www.theknot.com/us/maria-dinu-and-thami-amrani-aug-2024/rsvp"
+    }
   }
 }
 </script>
@@ -92,7 +99,7 @@ export default {
           }
 
           99.999% {
-            opacity: 0.99;
+            opacity: 0.99999;
           }
 
           100% {
@@ -170,7 +177,7 @@ export default {
         z-index: 10;
         transform-origin: 50% 50%;
         transition: all 1.4s cubic-bezier(0.4, 0, 1, 1);
-        animation: pulse 3s linear infinite;
+        animation: pulse 2.8s linear infinite;
 
         &.invitation-flight {
           opacity: 0;
@@ -193,8 +200,64 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 1050px) {
+  .rsvp {
+    position: absolute;
+    opacity: 0;
+    right: 100px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    padding-top: 25px;
+    border: solid;
+    border-radius: 8px;
+    background-color: #385447;
+    border-width: 2px;
+    border-color: #a9895d;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4);
 
+    a {
+      width: 80%;
+      background-color: #f9f7e7;
+      border-radius: 8px;
+      border-width: 2px;
+      border-color: #385447;
+      color: #385447;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 16px;
+      color: #f9f7e7;
+    }
+
+    @keyframes appear {
+      0% {
+        opacity: 0;
+      }
+
+      99.999% {
+        opacity: 0.99999;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    &.opening {
+      animation: appear 4s forwards;
+      animation-delay: 4s;
+    }
+
+  }
+
+  @media only screen and (max-width: 1050px) {
     .cover-content {
       display: flex !important;
       align-items: center !important;
