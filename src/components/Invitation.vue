@@ -13,8 +13,8 @@
           :class="{ 'invitation-flight': isOpening }">
       </div>
       <div class="rsvp" :class="{ 'opening': isOpening }">
-        <a @click="rsvp">RSVP</a>
-        <p>Date limite: 01-05-2024</p>
+        <button @click="rsvp">R.S.V.P</button>
+        <p>Date limite: 01/05/2024</p>
       </div>
     </div>
   </div>
@@ -212,16 +212,18 @@ export default {
     padding: 10px;
     padding-top: 25px;
     border: solid;
-    border-radius: 8px;
+    border-radius: 2px;
     background-color: #385447;
-    border-width: 2px;
+    border-width: 1.5px;
     border-color: #a9895d;
+    outline: 0.7px solid #f9f7e7;
+    outline-offset: -10px;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4);
 
-    a {
+    button {
       width: 80%;
       background-color: #f9f7e7;
-      border-radius: 8px;
+      border-radius: 6px;
       border-width: 2px;
       border-color: #385447;
       color: #385447;
@@ -229,6 +231,20 @@ export default {
       display: flex;
       justify-content: center;
       font-weight: 500;
+      animation: pulse-2 4.8s linear infinite;
+    }
+    @keyframes pulse-2 {
+      0% {
+        transform: scale(1.0);
+      }
+
+      50% {
+        transform: scale(0.9);
+      }
+
+      100% {
+        transform: scale(1.0);
+      }
     }
 
     p {
@@ -292,6 +308,26 @@ export default {
       align-content: center;
       width: 85%;
       height: 88% !important;
+    }
+
+    .rsvp {
+      position: absolute;
+      top: -160px;
+      width: 54%;
+      height: 18%;
+      margin-top: 40px;
+      font-family: Garamond, serif;
+
+      p {
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      button {
+        padding: 8px;
+        width: 35%;
+        font-size: 12px;
+      }
     }
   }
 }
