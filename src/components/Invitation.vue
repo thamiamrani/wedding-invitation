@@ -4,7 +4,7 @@
       <div class="invitation-cover">
         <div class="cover-content" :class="{ 'invitation-up': isOpening }">
           <div class="content-inside">
-            <img class="content-inside-photo" src="../images/invite.png">
+            <img class="content-inside-photo" src="../images/new_design.png">
           </div>
         </div>
         <div class="cover-inside-left" :class="{ 'opening': isOpening }"></div>
@@ -111,8 +111,6 @@ export default {
         .content-inside {
           height: 100%;
           padding: 6px;
-          color: #a9895d;
-          background-color: #3c4d45;
           text-align: center;
           overflow: hidden;
           scrollbar-width: none;
@@ -120,7 +118,6 @@ export default {
           .content-inside-photo {
             width: 100%;
             padding: 6px;
-            border: 0.5px solid #ebf3d0c7;
           }
 
           p {
@@ -137,7 +134,7 @@ export default {
         width: 70%;
         height: 120%;
         border-radius: 10px;
-        background-color: #f9f7e7;
+        background-color: black;
         box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
         z-index: 6;
         transition: transform 2s;
@@ -155,7 +152,7 @@ export default {
         width: 40%;
         height: 120%;
         border-radius: 10px;
-        background-color: #385447;
+        background-color: #ffffff;
         box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
         z-index: 5;
         transition: transform 1.7s;
@@ -233,6 +230,7 @@ export default {
       font-weight: 500;
       animation: pulse-2 4.8s linear infinite;
     }
+
     @keyframes pulse-2 {
       0% {
         transform: scale(1.0);
