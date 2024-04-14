@@ -22,14 +22,15 @@ export default {
 
 html,
 body {
-  height: 100%;
+  width: 100%;
+  height: 100vh;
 }
 
 .wedding {
-  position: relative;
-  max-width: 100%;
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
-  perspective: 500px;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 2rem 6rem 2rem;
 }
 </style>
