@@ -39,7 +39,9 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   flex-grow: 1;
+  max-height: 100%;
 }
 
 .rsvp {
@@ -48,9 +50,11 @@ export default {
 
 .invitation-card {
   position: relative;
+  max-height: 100%;
 
   #frame {
     opacity: 0;
+    max-height: 100%;
   }
 
   .card-content {
@@ -59,6 +63,16 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
+    display: flex;
+    justify-content: center;
+
+    & > img {
+      max-height: 100%;
+    }
+
+    &.image {
+      transform: scale(1);
+    }
   }
 
   .cover {

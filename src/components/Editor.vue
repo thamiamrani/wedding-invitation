@@ -35,5 +35,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-height: 100%;
   }
 </style>
