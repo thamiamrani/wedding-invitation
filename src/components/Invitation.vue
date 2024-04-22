@@ -2,9 +2,9 @@
   <div class="invitation-page">
     <div class="rsvp">Click me</div>
     <div class="invitation-card" :class="{ 'opening': isOpening }">
-      <img id="frame" src="../images/invite1.png">
+      <img id="frame" src="../images/invite.png">
       <div class="card-content image">
-        <img src="../images/invite1.png">
+        <img :class="{ 'opening': isOpening }" src="../images/invite.png">
       </div>
       <div class="card-content cover">
         <div class="seal" @click="openInvitation" :class="{ 'opening': isOpening }"></div>
@@ -45,7 +45,7 @@ export default {
 }
 
 .rsvp {
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
 }
 
 .invitation-card {
@@ -59,6 +59,8 @@ export default {
 
   .card-content {
     position: absolute;
+    background-color: white;
+    border-radius: 0.5rem;
     width: 100%;
     height: 100%;
     top: 0;
@@ -68,10 +70,10 @@ export default {
 
     & > img {
       max-height: 100%;
-    }
-
-    &.image {
-      transform: scale(1);
+      &.opening {
+        z-index: 2;
+        animation: appear 3s linear forwards;
+      }
     }
   }
 
@@ -79,9 +81,10 @@ export default {
     display: flex;
 
     .left-pane {
-      background: blue;
+      background: #faefdd;
       flex-grow: 2;
-      transition: all 2s;
+      border-radius: 0.5rem;
+      transition: all 1.5s cubic-bezier(0.4, 0, 1, 1);
       transform-origin: 0 50%;
   
       &.opening {
@@ -91,9 +94,10 @@ export default {
     }
 
     .right-pane {
-      background: green;
+      background: white;
+      border-radius: 0.5rem;
       flex-grow: 1;
-      transition: all 2s;
+      transition: all 1.5s cubic-bezier(0.4, 0, 1, 1);
       transform-origin: 100% 50%;
   
       &.opening {
@@ -114,6 +118,27 @@ export default {
 
     &.opening {
       opacity: 0;
+    }
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+      transform: scale(1.00);
+    }
+
+    50% {
+      transform: scale(1.15);
+    }
+
+    99.999% {
+      opacity: 0.99999;
+      transform: scale(1.299999);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1.30);
     }
   }
   }
