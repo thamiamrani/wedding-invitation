@@ -1,12 +1,12 @@
 <template>
   <div class="invitation-page">
-    <div class="rsvp">Click me</div>
     <div class="invitation-card" :class="{ 'opening': isOpening }">
       <img id="frame" src="../images/invite.png">
       <div class="card-content image">
         <img :class="{ 'opening': isOpening }" src="../images/invite.png">
       </div>
       <div class="card-content cover">
+        <div class="rsvp" @click="openInvitation" :class="{ 'opening': isOpening }"></div>
         <div class="seal" @click="openInvitation" :class="{ 'opening': isOpening }"></div>
         <div class="left-pane" :class="{ 'opening': isOpening }"></div>
         <div class="right-pane" :class="{ 'opening': isOpening }"></div>
@@ -46,6 +46,15 @@ export default {
 
 .rsvp {
   margin-bottom: 0.2rem;
+  position: absolute;
+  width: 40%;
+  aspect-ratio: 1;
+  top: 8%;
+  left: 39%;
+  z-index: 3;
+  background-image: url("../images/RSVP.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .invitation-card {
@@ -94,7 +103,7 @@ export default {
     }
 
     .right-pane {
-      background: white;
+      background: rgba(232, 231, 231, 0.926);
       border-radius: 0.5rem;
       flex-grow: 1;
       transition: all 1.5s cubic-bezier(0.4, 0, 1, 1);
@@ -114,7 +123,6 @@ export default {
     background-image: url("../images/seal1.png");
     background-size: contain;
     background-repeat: no-repeat;
-    transition: opacity s;
 
     &.opening {
       opacity: 0;
