@@ -6,7 +6,9 @@
         <img :class="{ 'opening': isOpening }" src="../images/invite.png">
       </div>
       <div class="card-content cover">
-        <div class="rsvp" @click="openInvitation" :class="{ 'opening': isOpening }"></div>
+        <div class="rsvp" @click="rsvp" :class="{ 'opening': isOpening }">
+        <div id="btn"><p>RSVP</p><br/><p>Avant: 30 mai 2024</p></div>
+        </div>
         <div class="seal" @click="openInvitation" :class="{ 'opening': isOpening }"></div>
         <div class="left-pane" :class="{ 'opening': isOpening }"></div>
         <div class="right-pane" :class="{ 'opening': isOpening }"></div>
@@ -49,12 +51,38 @@ export default {
   position: absolute;
   width: 40%;
   aspect-ratio: 1;
-  top: 8%;
+  top: 6%;
   left: 39%;
   z-index: 3;
   background-image: url("../images/RSVP.png");
   background-size: contain;
   background-repeat: no-repeat;
+  opacity: 0;
+  &.opening {
+    animation: appear-rsvp 3s linear forwards;
+    animation-delay: 4s;
+  }
+  #btn {
+    background-color: rgb(218, 217, 217);
+    position: absolute;
+    border-radius: 2px;
+    width: 25%;
+    max-height: 5%;
+    aspect-ratio: 1;
+    font-size: .2rem;
+    font-weight: 500;
+    bottom: 37.5%;
+    right: 49.7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    column-gap: .2rem;
+    box-shadow: .18rem .1rem .1rem rgba(37, 37, 37, 0.754);
+    & > p {
+      font-size: .2rem;
+    }
+  }
 }
 
 .invitation-card {
@@ -63,7 +91,7 @@ export default {
 
   #frame {
     opacity: 0;
-    max-height: 100%;
+    max-height: 90%;
   }
 
   .card-content {
@@ -136,17 +164,38 @@ export default {
     }
 
     50% {
-      transform: scale(1.15);
+      transform: scale(1.0999);
     }
 
     99.999% {
       opacity: 0.99999;
-      transform: scale(1.299999);
+      transform: scale(1.209999);
     }
 
     100% {
       opacity: 1;
-      transform: scale(1.30);
+      transform: scale(1.21);
+    }
+  }
+  @keyframes appear-rsvp {
+    0% {
+      opacity: 0;
+      transform: scale(1.00);
+    }
+
+    50% {
+      opacity: 0.5;
+      transform: scale(1.6);
+    }
+
+    99.999% {
+      opacity: 0.99999;
+      transform: scale(2.19999);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(2.2);
     }
   }
   }
