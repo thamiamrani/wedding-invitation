@@ -7,7 +7,6 @@
       </div>
       <div class="card-content cover">
         <div class="rsvp" @click="rsvp" :class="{ 'opening': isOpening }">
-        <div id="btn"><p>RSVP</p></div>
         </div>
         <div class="seal" @click="openInvitation" :class="{ 'opening': isOpening }"></div>
         <div class="left-pane" :class="{ 'opening': isOpening }"></div>
@@ -65,28 +64,8 @@ export default {
   background-repeat: no-repeat;
   opacity: 0;
   &.opening {
-    animation: appear-rsvp 3s linear forwards;
-    animation-delay: 4s;
-  }
-  #btn {
-    background-color: rgb(218, 217, 217);
-    position: absolute;
-    border-radius: 2px;
-    width: 25%;
-    max-height: 5.5%;
-    aspect-ratio: 5;
-    bottom: 37.5%;
-    right: 49.7%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: .18rem .1rem .1rem rgba(37, 37, 37, 0.754);
-    animation: pulse 2.8s linear infinite;
-    & > p {
-      font-size: 0.28vh;
-      font-weight: 500;
-    }
+    animation: appear-rsvp 3s linear forwards, pulse-rsvp 3s linear infinite;
+    animation-delay: 6s;
   }
 }
 
@@ -217,6 +196,20 @@ export default {
 
     100% {
       transform: scale(1.05);
+    }
+  }
+
+  @keyframes pulse-rsvp {
+    0% {
+      transform: scale(2.2);
+    }
+
+    50% {
+      transform: scale(2.1);
+    }
+
+    100% {
+      transform: scale(2.2);
     }
   }
 
