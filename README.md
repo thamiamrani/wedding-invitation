@@ -8,5 +8,18 @@ npm install
 To run:
 
 ```
-npm run serve
+npm start
 ```
+
+To deploy:
+
+```
+npm run build
+
+git add --a
+
+git commit -m"commit msg"
+
+git subtree push --prefix dist origin gh-pages
+```
+
