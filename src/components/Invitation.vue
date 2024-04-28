@@ -57,14 +57,14 @@ export default {
   width: 40%;
   aspect-ratio: 1;
   top: 6%;
-  left: 39%;
+  left: 41%;
   z-index: 3;
   background-image: url("../images/RSVP.png");
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0;
   &.opening {
-    animation: appear-rsvp 3s linear forwards, pulse-rsvp 3s linear infinite;
+    animation: appear-rsvp 3s linear forwards, pulse-rsvp 3.4s linear infinite;
     animation-delay: 6s;
   }
 }
@@ -171,17 +171,17 @@ export default {
 
     50% {
       opacity: 0.5;
-      transform: scale(1.6);
+      transform: scale(1.65);
     }
 
     99.999% {
       opacity: 0.99999;
-      transform: scale(2.19999);
+      transform: scale(2.29999);
     }
 
     100% {
       opacity: 1;
-      transform: scale(2.2);
+      transform: scale(2.3);
     }
   }
 
@@ -201,15 +201,15 @@ export default {
 
   @keyframes pulse-rsvp {
     0% {
-      transform: scale(2.2);
+      transform: scale(2.3);
     }
 
     50% {
-      transform: scale(2.1);
+      transform: scale(2.2);
     }
 
     100% {
-      transform: scale(2.2);
+      transform: scale(2.3);
     }
   }
 
