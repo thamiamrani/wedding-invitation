@@ -33,4 +33,13 @@ body {
   justify-content: center;
   padding: 2rem 2rem 6rem 2rem;
 }
+
+@media only screen and (min-width: 900px) {
+  .wedding {
+    max-width: 50%;
+    justify-content: center;
+    position: absolute;
+    right: 27%;
+  }
+}
 </style>

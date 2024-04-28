@@ -1,5 +1,5 @@
 <template>
-  <div class="invitation-page">
+  <div class="invitation-page invitation-t">
     <div class="invitation-card" :class="{ 'opening': isOpening }">
       <img id="frame" src="../images/invite.png">
       <div class="card-content image">
@@ -7,7 +7,7 @@
       </div>
       <div class="card-content cover">
         <div class="rsvp" @click="rsvp" :class="{ 'opening': isOpening }">
-        <div id="btn"><p>RSVP</p><br/><p>Avant: 30 mai 2024</p></div>
+        <div id="btn"><p>RSVP</p></div>
         </div>
         <div class="seal" @click="openInvitation" :class="{ 'opening': isOpening }"></div>
         <div class="left-pane" :class="{ 'opening': isOpening }"></div>
@@ -27,11 +27,17 @@ export default {
   },
   methods: {
     openInvitation() {
-      this.isOpening = true
+      if (this.isOpening === false) {
+        this.isOpening = true
+      }
     },
     rsvp() {
       window.location.href = "https://www.theknot.com/us/maria-dinu-and-thami-amrani-aug-2024/rsvp"
     }
+  },
+  beforeMount() {
+    setTimeout(() => this.openInvitation(), 5000);
+
   }
 }
 </script>
@@ -67,20 +73,19 @@ export default {
     position: absolute;
     border-radius: 2px;
     width: 25%;
-    max-height: 5%;
-    aspect-ratio: 1;
-    font-size: .2rem;
-    font-weight: 500;
+    max-height: 5.5%;
+    aspect-ratio: 5;
     bottom: 37.5%;
     right: 49.7%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    column-gap: .2rem;
     box-shadow: .18rem .1rem .1rem rgba(37, 37, 37, 0.754);
+    animation: pulse 2.8s linear infinite;
     & > p {
-      font-size: .2rem;
+      font-size: 0.28vh;
+      font-weight: 500;
     }
   }
 }
@@ -151,6 +156,8 @@ export default {
     background-image: url("../images/seal1.png");
     background-size: contain;
     background-repeat: no-repeat;
+    animation: pulse 2.8s linear infinite;
+
 
     &.opening {
       opacity: 0;
@@ -198,6 +205,21 @@ export default {
       transform: scale(2.2);
     }
   }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1.05);
+    }
+
+    50% {
+      transform: scale(0.9);
+    }
+
+    100% {
+      transform: scale(1.05);
+    }
   }
+
+}
 }
 </style>
